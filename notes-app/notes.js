@@ -2,14 +2,15 @@ const fs = require('fs')
 const chalk = require('chalk')
 getNotes = function()
 {
-    return 'heyyy';
+  const notes=loadNotes()
+  notes.forEach((note)=>{console.log('Note Title: '+note.title+'\n'+note.body+'\n')})
 }
 const removeNote = function(title)
 {
      const notes=loadNotes()
-     getnote=notes.filter((note)=> {return note.title===title})
-     if(getnote.lenght===0)
-       console.log('note not found!!')
+     getnote=notes.filter((note)=> {return note.title!==title})
+     if(getnote.length===notes.length)
+       console.log(chalk.red('note not found!!'))
      else {
        saveNotes(getnote)
        console.log(chalk.green(title+' note has been deleted!'))
@@ -46,4 +47,4 @@ const loadNotes = function(){
         return []
     }
 }
-module.exports = {getnotes: this.getnotes, addnote: addNote, remove: removeNote}
+module.exports = {getnotes: getNotes, addnote: addNote, remove: removeNote}

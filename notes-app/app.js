@@ -23,10 +23,10 @@ yargs.command({
 })
 
 yargs.command({
-    command:'read',
-    describe:'Read a note',
+    command:'list',
+    describe:'list all the present notes',
     handler : function(){
-        console.log()
+        notes.getnotes()
     }
 })
 
